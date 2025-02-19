@@ -2,8 +2,13 @@ import Hero from "@/components/hero";
 import ConnectSupabaseSteps from "@/components/tutorial/connect-supabase-steps";
 import SignUpUserSteps from "@/components/tutorial/sign-up-user-steps";
 import { hasEnvVars } from "@/utils/supabase/check-env-vars";
+import { db } from "@/lib/db";
+import { users } from "@/lib/db/schema";
 
 export default async function Home() {
+  const result = await db.select().from(users);
+  console.log(result);
+
   return (
     <>
       <Hero />
